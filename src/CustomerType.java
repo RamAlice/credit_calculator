@@ -1,9 +1,9 @@
-public enum Type {
+public enum CustomerType {
     HUMAN("human"),
     BUSINESS("business");
 
     private final String type;
-    Type(String type) {
+    CustomerType(String type) {
         this.type = type;
     }
 
