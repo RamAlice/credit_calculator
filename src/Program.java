@@ -6,8 +6,10 @@ public class Program {
         double amountOfDebtTaken = scanner.nextDouble();
         double monthlyPayment = scanner.nextDouble();
         double interestRate = scanner.nextDouble();
-        CustomerType customerType = CustomerType.valueOf(scanner.next().toUpperCase());
-        ClientData data = new ClientData(amountOfDebtTaken, monthlyPayment, interestRate, customerType);
+        String clientType = scanner.next().toUpperCase();
+        DataValidation.validateEnum(clientType);
+        DataValidation.checkAmountOfDebtTaken(amountOfDebtTaken, monthlyPayment, interestRate);
+        ClientData data = new ClientData(amountOfDebtTaken, monthlyPayment, interestRate, ClientType.valueOf(clientType));
         CreditCalculation.calculate(data);
     }
 }

@@ -2,7 +2,7 @@
 public class CreditCalculation {
 
     public static void calculate(ClientData data) throws Exception {
-        switch (data.getCustomerType()) {
+        switch (data.getClientType()) {
             case HUMAN:
                 calculateOverpaymentTypeHuman(data);
                 break;
@@ -13,7 +13,6 @@ public class CreditCalculation {
     }
 
     private static void calculateOverpaymentTypeHuman(ClientData data) throws Exception {
-        checkAmountOfDebtTaken(data.getAmountOfDebtTaken());
         double sum = data.getAmountOfDebtTaken(); // долгу присваивается значение взятой суммы
         double interest; // вводим переменную отвечающию за сумму процентов
         double overpayment = 0;
@@ -32,7 +31,6 @@ public class CreditCalculation {
     }
 
     private static void calculateOverpaymentTypeBusiness(ClientData data) throws Exception {
-        checkAmountOfDebtTaken(data.getAmountOfDebtTaken());
         double sum = data.getAmountOfDebtTaken(); // долгу присваивается значение взятой суммы
         double interest; // вводим переменную отвечающию за сумму процентов
         double overpayment = 0;
@@ -48,11 +46,5 @@ public class CreditCalculation {
             sum += interest;  // сумма + процент
         }
         System.out.println(overpayment);
-    }
-
-    private static void checkAmountOfDebtTaken(double amountOfDebtTaken) throws Exception {
-        if (amountOfDebtTaken <= 0) {
-            throw new Exception("throws Exception"); // проверяю, что сумма не отрицательная
-        }
     }
 }
